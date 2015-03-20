@@ -1,4 +1,52 @@
 <?php
+/**
+ * TITEL:				Extension: FileIndexer / FileIndexer.body.php
+ * ERSTELLDATUM:		26.06.2008
+ * AUTHOR:				Ramon Dohle aka 'raZe'
+ * ORGANISATION:		GRASS-MERKUR GmbH & Co. KG & raZe.it
+ * VERSION:				0.4.2.00	30.07.2014
+ * REVISION:
+ * 		26.06.2008	0.1.0.00	raZe		*	Initiale Version
+ * 		29.06.2009	0.1.1.00	raZe		*	Weitere Offene Punkte abgearbeitet:
+ * 												*	$wgFiArticleNamespace auch bei Uploads nutzen.
+ * 												*	$wgFiAutoIndexMark automatisch beim Upload mit Indexerstellungs-Aufforderung im Artikel einsetzbar machen.
+ * 													Neue Option: $wgFiSetAutoIndexMark
+ * 												*	$wgFiCheckSystem nutzen um Systemvoraussetzung bei jedem Aufruf zu pruefen
+ * 													Neue Option: $wgFiCheckSystem
+ * 												*	Temporaere Datei muss eindeutig einer Session zugeordnet werden koennen...
+ * 		01.07.2009	0.1.2.00	raZe		*	An neue Funktionen in FileIndexer.php angeglichen
+ * 		26.08.2010	0.2.0.00	raZe		*	Formular an neue Funktionsweise angepasst
+ * 		27.08.2010	0.2.1.00	raZe		*	Logik nach neuem Formular umgesetzt
+ * 		28.08.2010	0.2.2.00	raZe		*	Formular mit Hilfeinformationen verbessert
+ * 											*	Ergebnisinformationsausgabe verbessert
+ * 											*	Check Funktionalitaet hinzugefuegt
+ * 											*	Formularreset abgestellt
+ * 		29.08.2010	0.2.2.01	raZe		*	Revisionskopf korrigiert
+ * 		30.08.2010	0.3.0.00	raZe		*	Mehrere Umstellungen auf Formularanpassungen im Page edit und Upload Bereich
+ * 		23.09.2010	0.3.1.00	raZe		*	BUGFIX: Fehler entfernt, der bei Leerzeilen in der Spezialseite zum Abbruch fuehrte
+ * 		25.09.2010	0.3.2.00	raZe		*	Reihenfolge der Felder in der Spezialseite umgestellt
+ * 											*	Anzeige einiger Eingabefelder (Namespace und WildcardSign) optional gemacht.
+ * 		26.09.2010	0.3.3.00	raZe		*	Trennung zwischen "nicht gefundenen Dateien" und "nicht unterstuetzten Dateitypen" bei der Ergebnisausgabe
+ * 												herbeigefuehrt
+ * 											*	Systempruefung eines Kommandos ist nun auch mehrsprachig
+ * 		27.09.2010	0.4.0.00	raZe		*	SCHNITTSTELLE: neue, statische Funktion getCommandLine() zur endgueltigen Bestimmung des Kommandoaufrufes
+ * 											*	BUGFIX: Funktion checkNecessaryCommands() ueberarbeitet un dFehler behoben
+ * 												+	Ausgabe verbesssert
+ * 												+	'whereis' durch 'which' abgeloest
+ * 												+	wenn Pfad inkorrekt, aber Erfolg mit which => kein Fehler, sondern Warnung (Spezialseite), aber
+ * 													Indexierung wird mit gefundenem Pfad trotzdem durchgefuehrt.
+ * 		28.09.2010	0.4.1.00	raZe		*	BUGFIX: In processIndex() Links korrigiert, sodass Bilder nicht mehr als Bild aufgelistet werden
+ * 											*	Wildcard Zeichen Text in Spezialzeichenhilfe besser hervorgehoben fuer die Konfiguration
+ * 												$wgFiSpWildcardSignChangeable = false
+ * 		30.07.2014	0.4.2.00	lfschenone	*	Updates to make it work in MediaWiki 1.23.1
+ *
+ *
+ * BESCHREIBUNG:
+ * 		Diese Erweiterung basiert auf der Wiki-Erweiterung 'FileIndexer' vom Stand 15.05.2008.
+ * 		Wie sein Original soll sie Dateien Indexieren um auch den Inhalt dieser Dateien durch Suchmaschienen zu erfassen.
+ *
+ * 		Hier wird die Spezialseitenklasse zur Verfuegung gestellt.
+ */
 
 /**
  * FileIndexer extends FileRepo only to be able to call a protected static method of FileRepo

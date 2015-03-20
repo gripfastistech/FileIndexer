@@ -1,4 +1,34 @@
 <?php
+/**
+ * TITEL:				Extension: FileIndexer / FileIndexer.config.php
+ * ERSTELLDATUM:		25.09.2010
+ * AUTHOR:				Ramon Dohle aka 'raZe'
+ * ORGANISATION:		GRASS-MERKUR GmbH & Co. KG & raZe.it
+ * VERSION:				0.1.4.00	30.09.2010
+ * REVISION:
+ * 		25.09.2010	0.1.0.00	raZe		*	Initiale Version
+ * 											*	Ausgelagert aus FileIndexer.php
+ * 		26.09.2010	0.1.1.00	raZe		*	Variable $wgFiFilenamePlaceholder durch Konstante WC_FI_FILEPATH ersetzt
+ * 		27.09.2010	0.1.2.00	raZe		*	$wgFiCommandCalls unter Verwendung der Konstante WC_FI_COMMAND neu gesetzt
+ * 		28.09.2010	0.1.3.00	raZe		*	Weitere Office Dokumenttypen eingetragen
+ * 											*	BUGFIX: Index iconv in $wgFiCommandPaths korrigiert
+ * 		30.09.2010	0.1.4.00	raZe		*	Defaultwert von $wgFiCommandPaths geaendert - Pfrade auf /usr/bin/ vereinheitlicht
+ * 											*	Defaultwert von $wgFiCommandCalls geaendert - hochgeladene Datei in Anfuehrungszeichen gesetzt
+ *
+ * OFFENE PUNKTE:
+ * 		@SYSTEMADMINISTRATOREN:
+ * 			Die folgenden Konfigurationsparameter muessen noch geprueft werden:
+ * 				$wgFiCommandPaths
+ * 				$wgFiCommandCalls
+ * 				$wgFiTypesToRemoveTags
+ * 			Die
+ *
+ * BESCHREIBUNG:
+ * 		Diese Erweiterung basiert auf der Wiki-Erweiterung 'FileIndexer' vom Stand 15.05.2008.
+ * 		Wie sein Original soll sie Dateien Indexieren um auch den Inhalt dieser Dateien durch Suchmaschienen zu erfassen.
+ *
+ * 		Hier wird die Konfiguration der Erweiterung extrahiert.
+ */
 
 define( "WC_FI_TMPFILE", "/fi.requested.article." );
 define( "WC_FI_FILEPATH", "[=-FILE_NAME-=]" );
