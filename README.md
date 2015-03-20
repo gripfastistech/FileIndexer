@@ -9,8 +9,17 @@ Installation
 ------------
 To install FileIndexer, simply clone this repo to your extensions/ directory and add the following line to your LocalSettings.php:
 
-require_once "$IP/extensions/FileIndexer/FileIndexer.php";
+	require_once "$IP/extensions/FileIndexer/FileIndexer.php";
+
+Configuration
+-------------
 
 Usage
 -----
 Once the extension has been installed, go to Special:FileIndexer to generate the index of the uploaded text files. After doing that the files will be searchable from the regular search box.
+
+Tasks
+-----
+* Fill in the configuration section.
+* Translate all messages in German to English.
+* Fix the security issues that no one cares to point out.
