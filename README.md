@@ -13,7 +13,7 @@ To install FileIndexer, simply clone this repo to your extensions/ directory and
 
 Configuration
 -------------
-Documentation missing
+Documentation missing.
 
 Usage
 -----
