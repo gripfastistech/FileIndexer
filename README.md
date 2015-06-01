@@ -6,9 +6,11 @@ This extension has been removed from MediaWiki.org due to security reasons (http
 
 Installation
 ------------
-To install FileIndexer, simply clone this repo to your extensions/ directory and add the following line to your LocalSettings.php:
+To install FileIndexer, clone this repo to your extensions/ directory and add the following line to your LocalSettings.php:
 
 	require_once "$IP/extensions/FileIndexer/FileIndexer.php";
+
+Then install all dependencies listed on FilIndexer.config.php (lines 59-66).
 
 Configuration
 -------------
