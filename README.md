@@ -8,22 +8,22 @@ If anyone wants to fix this problem, me and the rest of the community would be v
 
 ## Installation
 
-To install FileIndexer, clone this repo to your extensions/ directory and add the following line to your LocalSettings.php:
+To install FileIndexer, clone this repo to the extensions/ directory and add the following line to LocalSettings.php:
 
 	require_once "$IP/extensions/FileIndexer/FileIndexer.php";
 
-Then install all dependencies listed on FilIndexer.config.php (lines 59-66).
+Then install the relevant dependencies listed at FilIndexer.config.php (lines 59-66).
 
 ## Configuration
 
-Documentation missing, check the FileIndexer.config.php file!
+Documentation missing, check the FileIndexer.config.php file.
 
 ## Usage
 
-Once the extension has been installed and configured, go to Special:FileIndexer to generate the index of the uploaded text files. After doing that the files will be searchable from the regular search box.
+Once the extension has been installed and configured, go to Special:FileIndexer to generate the index of the uploaded text files. After doing that the files will be searchable from the regular search box. New files are automatically indexed.
 
 ## Tasks
 
-* Fix the security issue.
-* Configuration documentation.
 * Translate all comments in German to English.
+* Fix the security issue.
+* Document the config options.
