@@ -195,7 +195,7 @@ class SpecialFileIndexer extends SpecialPage {
 			if ( $iDestionationArticleId != 0 ) {
 				// Zielartikel existiert
 				$oArticle = Article::newFromId( $iDestionationArticleId);
-				$oArticle->loadContent();
+				$oArticle->fetchContent();
 
 				// Check, ob Index vorhanden
 				$aFragments = FileIndexer::getIndexFragments( $oArticle->mContent);
