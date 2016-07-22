@@ -75,7 +75,7 @@ class FileIndexer extends FileRepo {
 			if ( $oFileArticle->exists()){
 				$oArticle = new Article($oEditPage->mTitle);
 				if ( $oArticle->exists()){
-					$oArticle->loadContent();
+					$oArticle->fetchContent();
 					$xFragments = self::getIndexFragments($oArticle->mContent);
 					$bCheckboxChecked = $xFragments !== false && $wgFiUpdateOnEditArticleByDefault || $xFragments === false && $wgFiCreateOnUploadByDefault;
 				} else {
@@ -110,7 +110,7 @@ class FileIndexer extends FileRepo {
 				$oTitle = Title::makeTitleSafe($iIndexArticleNamespace, $oUploadForm->mDesiredDestName);
 				$oArticle = new Article($oTitle);
 				if ( $oArticle->exists()){
-					$oArticle->loadContent();
+					$oArticle->fetchContent();
 					$bCheckboxChecked = !(self::getIndexFragments($oArticle->mContent) === false);
 				} else {
 					$bCheckboxChecked = $wgFiCreateOnUploadByDefault;
