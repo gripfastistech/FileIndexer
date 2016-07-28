@@ -4,7 +4,7 @@ FileIndexer is a MediaWiki extension that allows users to search within uploaded
 
 This extension has been removed from MediaWiki.org due to security reasons (https://www.mediawiki.org/wiki/Extension:FileIndexer). Basically, the problem is that the extension uses the "exec" command several times, without properly escaping the variables, so it's possible for a malicious user to upload a file with a name like "nothing | rm *.xls" and do nasty stuff.
 
-If anyone wants to fix this problem, everyone would be very grateful.
+If anyone wants to fix this problem, everyone would be grateful.
 
 ## Installation
 
@@ -24,6 +24,6 @@ Once the extension has been installed and configured, log in as an admin and go 
 
 ## Tasks
 
-* Translate all comments in German to English.
 * Fix the security issue.
+* Translate all code comments in German to English.
 * Document the config options.
