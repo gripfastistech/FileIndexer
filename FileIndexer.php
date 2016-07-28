@@ -77,7 +77,7 @@
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'FileIndexer',
-	'version' => '0.5',
+	'version' => '0.6',
 	'author' => array( '[https://www.mediawiki.org/wiki/User:RaZe RaZe]', '[https://www.mediawiki.org/wiki/User:SmartK SmartK]' ),
 	'description' => 'Creates an index that makes uploaded text files searchable',
 	'descriptionmsg' => 'fileindexer-desc',

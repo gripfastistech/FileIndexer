@@ -8,7 +8,7 @@ class SpecialFileIndexer extends SpecialPage {
 	 * Konstruktor der Spezialseite.
 	 */
 	function __construct() {
-		parent::__construct('FileIndexer');
+		parent::__construct( 'FileIndexer', 'editinterface' );
 	}
 
 	/**
@@ -25,14 +25,14 @@ class SpecialFileIndexer extends SpecialPage {
 		}
 
 		if ( file_exists( $sCommandPath) === false ) {
-			$sCommand = (strrpos( $sCommandPath, '/') !== false) ? substr( $sCommandPath, strrpos( $sCommandPath, '/') + 1) : $sCommandPath;
-			exec("which " . $sCommand, $aWhichReply);
+			$sCommand = ( strrpos( $sCommandPath, '/' ) !== false ) ? substr( $sCommandPath, strrpos( $sCommandPath, '/' ) + 1 ) : $sCommandPath;
+			exec( "which " . $sCommand, $aWhichReply );
 			if ( empty( $aWhichReply) ) {
 				$wgFiCommandPaths[$sCommand] = false;
-				return "* ERROR (" . $sCommand . "): " . wfMessage('fileindexer_sp_msg_response_systemcheck_command_missing') . "\n";
+				return "* ERROR (" . $sCommand . "): " . wfMessage( 'fileindexer_sp_msg_response_systemcheck_command_missing' ) . "\n";
 			} else {
 				$wgFiCommandPaths[$sCommand] = $aWhichReply[0];
-				return "* WARNING (" . $sCommand . "): " . wfMessage('fileindexer_sp_msg_response_systemcheck_command_wrong_path') . $aWhichReply[0] . "\n";
+				return "* WARNING (" . $sCommand . "): " . wfMessage( 'fileindexer_sp_msg_response_systemcheck_command_wrong_path' ) . $aWhichReply[0] . "\n";
 			}
 
 		}
@@ -65,22 +65,22 @@ class SpecialFileIndexer extends SpecialPage {
 	static function getCommandLine( $sFile ) {
 		global $wgFiCommandCalls, $wgFiCommandPaths;
 
-		$sFileExtension = strtolower(substr(strrchr( $sFile, '.'),1));
+		$sFileExtension = strtolower( substr( strrchr( $sFile, '.' ), 1 ) );
 		$sCommandLine = $wgFiCommandCalls[$sFileExtension];
 
-		while(strpos( $sCommandLine, WC_FI_COMMAND) !== false ) {
-			$iSignStart = strpos( $sCommandLine, WC_FI_COMMAND);
-			$iSignEnd = strlen(WC_FI_COMMAND) + $iSignStart;
-			$iOpenSign = strpos( $sCommandLine, '[', $iSignEnd);
-			$iCloseSign = strpos( $sCommandLine, ']', $iSignEnd + 1);
-			if ( $iOpenSign === false || $iCloseSign === false || $iOpenSign > $iCloseSign ) {
+		while ( strpos( $sCommandLine, WC_FI_COMMAND ) !== false ) {
+			$iSignStart = strpos( $sCommandLine, WC_FI_COMMAND );
+			$iSignEnd = strlen( WC_FI_COMMAND ) + $iSignStart;
+			$iOpenSign = strpos( $sCommandLine, '[', $iSignEnd );
+			$iCloseSign = strpos( $sCommandLine, ']', $iSignEnd + 1 );
+			if ( $iOpenSign === false or $iCloseSign === false or $iOpenSign > $iCloseSign ) {
 				return false;
 			}
 
-			$sCommand = trim(substr( $sCommandLine, $iOpenSign + 1, $iCloseSign - $iOpenSign - 1));
-			$sCommandLine = substr( $sCommandLine, 0, $iSignStart) . $wgFiCommandPaths[$sCommand] . substr( $sCommandLine, $iCloseSign + 1);
+			$sCommand = trim( substr( $sCommandLine, $iOpenSign + 1, $iCloseSign - $iOpenSign - 1 ) );
+			$sCommandLine = substr( $sCommandLine, 0, $iSignStart ) . $wgFiCommandPaths[$sCommand] . substr( $sCommandLine, $iCloseSign + 1 );
 		}
-		return str_replace(WC_FI_FILEPATH, $sFile, $sCommandLine);
+		return str_replace( WC_FI_FILEPATH, $sFile, $sCommandLine );
 	}
 
 	/**
@@ -93,7 +93,7 @@ class SpecialFileIndexer extends SpecialPage {
 	public static function checkFileType( $sFilename ) {
 		global $wgFiCommandCalls;
 
-		return isset( $wgFiCommandCalls[strtolower(substr(strrchr( $sFilename, '.'),1))]);
+		return isset( $wgFiCommandCalls[ strtolower( substr( strrchr( $sFilename, '.'), 1 ) ) ] );
 	}
 
 	/**
@@ -102,7 +102,12 @@ class SpecialFileIndexer extends SpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut;
 
-		if ( !is_null( $wgRequest->getVal('wpSubmitButton')) && !is_null( $wgRequest->getVal('wpFileMatches')) ) {
+		if ( !$this->userCanExecute( $this->getUser() )  ) {
+			$this->displayRestrictionError();
+			return;
+		}
+
+		if ( !is_null( $wgRequest->getVal('wpSubmitButton' ) ) && !is_null( $wgRequest->getVal('wpFileMatches' ) ) ) {
 			$this->processIndex();
 		}
 
