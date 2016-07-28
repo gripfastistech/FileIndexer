@@ -73,8 +73,6 @@ $wgFiCommandPaths = array(
  * 		ACHTUNG: Bitte die Konstante WC_FI_FILEPATH dort einsetzen, wo spaeter jeweils der Dateipfad ersetzt werden soll!
  */
 $wgFiCommandCalls = array(
-	//'pdf' => WC_FI_COMMAND . "[convPDFtoTXT] \"" . WC_FI_FILEPATH . "\"",
-	'pdf' => WC_FI_COMMAND . "[pdftotext] -raw -nopgbrk \"" . WC_FI_FILEPATH . "\" -| " . WC_FI_COMMAND . "[iconv] -f ISO-8859-1 -t UTF-8",
 	'dot' => WC_FI_COMMAND . "[antiword] -m UTF-8.txt -s \"" . WC_FI_FILEPATH . "\"",
 	'doc' => WC_FI_COMMAND . "[antiword] -m UTF-8.txt -s \"" . WC_FI_FILEPATH . "\"",
 	'xls' => WC_FI_COMMAND . "[xls2csv] \"" . WC_FI_FILEPATH . "\"",
@@ -96,6 +94,13 @@ $wgFiCommandCalls = array(
 	'xslx' => WC_FI_COMMAND . "[unzip] -p \"" . WC_FI_FILEPATH . "\" xl/sharedStrings.xml",
 	'xlsm' => WC_FI_COMMAND . "[unzip] -p \"" . WC_FI_FILEPATH . "\" xl/sharedStrings.xml",
 );
+
+global $wgFileIndexer_OCRisActive;
+if ( $wgFileIndexer_OCRisActive ) {
+	$wgFiCommandCalls['pdf'] = WC_FI_COMMAND . "[convPDFtoTXT] \"" . WC_FI_FILEPATH . "\"";
+} else {
+	$wgFiCommandCalls['pdf'] = WC_FI_COMMAND . "[pdftotext] -raw -nopgbrk \"" . WC_FI_FILEPATH . "\" -| " . WC_FI_COMMAND . "[iconv] -f ISO-8859-1 -t UTF-8";
+}
 
 /*
  * TYP: ARRAY
