@@ -8,11 +8,11 @@ To install FileIndexer, clone this repo to the extensions/ directory and add the
 
 Mediawiki v1.35+: ```wfLoadExtension( 'FileIndexer' );```
 	
-Original [old] method: require_once "$IP/extensions/FileIndexer/FileIndexer.php";
+Original [old] method: ```require_once "$IP/extensions/FileIndexer/FileIndexer.php";```
 
-Then install the relevant dependencies listed at FileIndexer.config.php (lines 59-66).
+Install the required dependencies listed at FileIndexer.config.php (lines 59-66).
 
-## Required Dependencies (i.e. Ubuntu 20.04)
+## Required Dependencies (per FileIndexer.config.php lines 59-66) on Ubuntu 20.04:
 
  - convPDFtoTXT: ```(?)```
  - pdftotext: ```sudo apt-get install poppler-utils```
