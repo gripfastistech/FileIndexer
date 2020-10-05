@@ -43,7 +43,7 @@ Install the required dependencies listed at FileIndexer.config.php (lines 59-66)
  - strings: ```apt-get install binutils```
  - unzip: ```apt-get install unzip```
  
-## OTHER LINUX DISTROS
+## Other Linux OS:
  - Search here for dependencies install method/packages: https://command-not-found.com/
  
 ## Configuration
