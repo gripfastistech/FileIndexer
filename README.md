@@ -6,9 +6,9 @@ FileIndexer is a MediaWiki extension that allows users to search within uploaded
 
 To install FileIndexer, clone this repo to the extensions/ directory and add the following line to LocalSettings.php:
 
-	Mediawiki v1.35+: ```wfLoadExtension( 'FileIndexer' );```
+Mediawiki v1.35+: ```wfLoadExtension( 'FileIndexer' );```
 	
-	Original [old] method: require_once "$IP/extensions/FileIndexer/FileIndexer.php";
+Original [old] method: require_once "$IP/extensions/FileIndexer/FileIndexer.php";
 
 Then install the relevant dependencies listed at FileIndexer.config.php (lines 59-66).
 
