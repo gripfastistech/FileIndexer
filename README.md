@@ -18,6 +18,17 @@ Documentation missing, check the FileIndexer.config.php file directly.
 
 By default, FileIndexer will try to use the command line tool "pdftotext" to index PDF files. However, by setting `$wgFileIndexer_OCRisActive = true;` in your LocalSettings *before* requiring the extension, the "convPDFtoTXT" tool will be used, which uses optical character recognition (OCR) to scan and index PDF files.
 
+## Required dependicies (Ubuntu 20.04)
+
+ - convPDFtoTXT
+ - pdftotext (poppler-utils)
+ - iconv
+ - antiword
+ - xlx2csv
+ - catppt
+ - strings
+ - unzip
+
 ## Usage
 
-Once the extension has been installed and configured, log in as an admin and go to Special:FileIndexer to generate the index of the uploaded text files. After doing that the files will be searchable from the regular search box. New files are automatically indexed.
+Once the extension has been installed and configured, log in as an admin and go to Special:FileIndexer to generate the index of the uploaded text files. After doing that the files will be searchable from the regular search box. New files are automatically indexed (?).
