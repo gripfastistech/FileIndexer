@@ -5,7 +5,7 @@ FileIndexer is a [MediaWiki depecrecated extension](https://www.mediawiki.org/wi
 ## [Changelog](https://github.com/gripfastistech/FileIndexer/blob/master/changelog.md)
 
 ## To do
- - [ ] Specifify extension.json settings per schema here: https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#manifest_version
+ - [ ] Create valid extension.json settings per schema here: https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#manifest_version
  - [ ] Call extension using new methods: ``` wfLoadExtension( 'FileIndexer' ); ```
 
 ## Installation
