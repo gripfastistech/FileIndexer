@@ -1,6 +1,6 @@
 # FileIndexer
 
-FileIndexer is a MediaWiki extension that allows users to search within uploaded text files, such as PDFs, DOCs, TXTs, etc. This version is modified for use with internal-only intranet wiki's for Mediawiki v1.35. Do NOT use on public wikis.
+FileIndexer is a MediaWiki extension that allows users to search within uploaded text files, such as PDFs, DOCs, TXTs, etc. This version is modified for use with internal-only intranet wikis based on Mediawiki v1.35. Do NOT use on public wikis.
 
 ## Installation
 
