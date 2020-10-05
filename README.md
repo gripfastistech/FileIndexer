@@ -6,22 +6,22 @@ FileIndexer is a MediaWiki extension that allows users to search within uploaded
 
 To install FileIndexer, clone this repo to the extensions/ directory and add the following line to LocalSettings.php:
 
-	Mediawiki v1.35+: wfLoadExtension( 'FileIndexer' ); 
+	Mediawiki v1.35+: ```wfLoadExtension( 'FileIndexer' );```
 	
 	Original [old] method: require_once "$IP/extensions/FileIndexer/FileIndexer.php";
 
 Then install the relevant dependencies listed at FileIndexer.config.php (lines 59-66).
 
-## Required dependicies (Ubuntu 20.04)
+## Required Dependencies (i.e. Ubuntu 20.04)
 
- - convPDFtoTXT: (?)
- - pdftotext: sudo apt-get install poppler-utils
- - iconv: sudo apt install libc6 and/or(?): sudo apt-get install -y php-iconv
- - antiword: sudo apt install antiword
- - xls2csv: sudo apt install xls2csv
- - catppt: sudo apt install catdoc
- - strings: apt-get install binutils
- - unzip: apt-get install unzip
+ - convPDFtoTXT: ```(?)```
+ - pdftotext: ```sudo apt-get install poppler-utils```
+ - iconv: ```sudo apt install libc6 and/or(?): sudo apt-get install -y php-iconv```
+ - antiword: ```sudo apt install antiword```
+ - xls2csv: ```sudo apt install xls2csv```
+ - catppt: ```sudo apt install catdoc```
+ - strings: ```apt-get install binutils```
+ - unzip: ```apt-get install unzip```
  
 ## Configuration
 
