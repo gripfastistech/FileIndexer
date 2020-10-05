@@ -7,5 +7,5 @@
  - Changed ``` $wgOut->addWikiText ``` to ```$output->addWikiTextAsInterface```
 
 ## To do
- [ ] Specifify extension.json settings per schema here: https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#manifest_version
- [ ] Call extension using new methods: ``` wfLoadExtension( 'FileIndexer' ); ```
+ - [ ] Specifify extension.json settings per schema here: https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#manifest_version
+ - [ ] Call extension using new methods: ``` wfLoadExtension( 'FileIndexer' ); ```
