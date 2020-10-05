@@ -12,16 +12,30 @@ Original [old] method: ```require_once "$IP/extensions/FileIndexer/FileIndexer.p
 
 Install the required dependencies listed at FileIndexer.config.php (lines 59-66).
 
-## Required Dependencies (per FileIndexer.config.php lines 59-66) on Ubuntu 20.04:
+## Required Dependencies (per FileIndexer.config.php lines 59-66):
 
- - convPDFtoTXT: ```(?)```
+ - convPDFtoTXT
+ - pdftotext
+ - iconv
+ - antiword
+ - xls2csv
+ - catppt
+ - strings
+ - unzip
+ 
+## Ubuntu (20.04):
+ 
+  - convPDFtoTXT: ```(?)```
  - pdftotext: ```sudo apt-get install poppler-utils```
- - iconv: ```sudo apt install libc6 and/or(?): sudo apt-get install -y php-iconv```
+ - iconv: ```sudo apt install libc6```
  - antiword: ```sudo apt install antiword```
  - xls2csv: ```sudo apt install xls2csv```
  - catppt: ```sudo apt install catdoc```
  - strings: ```apt-get install binutils```
  - unzip: ```apt-get install unzip```
+ 
+## OTHER LINUX DISTROS
+ - Search here for dependencies install method/packages: https://command-not-found.com/
  
 ## Configuration
 
