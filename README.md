@@ -19,15 +19,15 @@ Then install the relevant dependencies listed at FileIndexer.config.php (lines 5
  - iconv: sudo apt install libc6 and/or(?): sudo apt-get install -y php-iconv
  - antiword: sudo apt install antiword
  - xls2csv: sudo apt install xls2csv
+ - catppt: sudo apt install catdoc
+ - strings: apt-get install binutils
+ - unzip: apt-get install unzip
  
 ## Configuration
 
 Documentation missing, check the FileIndexer.config.php file directly.
 
 By default, FileIndexer will try to use the command line tool "pdftotext" to index PDF files. However, by setting `$wgFileIndexer_OCRisActive = true;` in your LocalSettings *before* requiring the extension, the "convPDFtoTXT" tool will be used, which uses optical character recognition (OCR) to scan and index PDF files.
- - catppt
- - strings
- - unzip
  
 ## Configuration
 
