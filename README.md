@@ -6,8 +6,6 @@ FileIndexer is a [MediaWiki depecrecated extension](https://www.mediawiki.org/wi
 
 To install FileIndexer, clone this repo to the extensions/ directory and add the following line to LocalSettings.php:
 
-Mediawiki v1.35+:
-
 ```
 # FILEINDEXER EXTENSION TO ALLOW UPLOADED FILES TO BE INDEXED/SEARCHABLE
   # HELPER "convPDFtoTXT" OCR use (?):
