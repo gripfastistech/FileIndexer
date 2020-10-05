@@ -5,6 +5,12 @@ FileIndexer is a [MediaWiki depecrecated extension](https://www.mediawiki.org/wi
 ## [Changelog](https://github.com/gripfastistech/FileIndexer/blob/master/changelog.md)
 
 ## To do
+ - [ ] Fix: Notice: Undefined variable: output in /var/www/html/WIKI/extensions/FileIndexer/SpecialFileIndexer.php on line 304
+ - [ ] Fix: Notice: Notice: Undefined property: OutputPage::$ in /var/www/html/WIKI/extensions/FileIndexer/SpecialFileIndexer.php on line 304
+ - [ ] Fix: Internal error [9be16b23a4c30900e0bc72e4] /index.php?title=Special:FileIndexer Error from line 304 of /var/www/html/WIKI/extensions/FileIndexer/SpecialFileIndexer.php: Call to a member function addWikiText() on null
+ - [ ] German Comments > English
+ - [ ] Others(?)
+ - [ ] Upload changed file versions. 
  - [ ] Create valid extension.json settings per schema here: https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#manifest_version
  - [ ] Call extension using new methods: ``` wfLoadExtension( 'FileIndexer' ); ```
 
