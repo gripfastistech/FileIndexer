@@ -2,6 +2,12 @@
 
 FileIndexer is a [MediaWiki depecrecated extension](https://www.mediawiki.org/wiki/Extension_talk:FileIndexer#Security) that allows users to search within uploaded text files, such as PDFs, DOCs, TXTs, etc. This version is modified for use with ***internal-network/intranet use cases*** based on Mediawiki v1.35. Do NOT use on public wikis.
 
+## [Changelog](https://github.com/gripfastistech/FileIndexer/blob/master/changelog.md)
+
+## To do
+ - [ ] Specifify extension.json settings per schema here: https://www.mediawiki.org/wiki/Manual:Extension.json/Schema#manifest_version
+ - [ ] Call extension using new methods: ``` wfLoadExtension( 'FileIndexer' ); ```
+
 ## Installation
 
 To install FileIndexer, clone this repo to the extensions/ directory and add the following line to LocalSettings.php:
@@ -11,9 +17,9 @@ To install FileIndexer, clone this repo to the extensions/ directory and add the
   # HELPER "convPDFtoTXT" OCR use (?):
 	$wgFileIndexer_OCRisActive = true;
   # EXTENSION CALL MEDIAWIKI v1.35: 
-	wfLoadExtension( 'FileIndexer' );
+	# wfLoadExtension( 'FileIndexer' );
   # OLD EXTENSION CALL METHOD:
-	# require_once( "$IP/extensions/FileIndexer/FileIndexer.php" );
+	require_once( "$IP/extensions/FileIndexer/FileIndexer.php" );
 ```
 	
 Install the required dependencies listed at FileIndexer.config.php (lines 59-66).
