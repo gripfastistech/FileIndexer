@@ -5,17 +5,17 @@ class SpecialFileIndexer extends SpecialPage {
 	var $insertEditTools = true;
 
 	/**
-	 * Konstruktor der Spezialseite.
+	 * Special page constructor.
 	 */
 	function __construct() {
 		parent::__construct( 'FileIndexer', 'editinterface' );
 	}
 
 	/**
-	 * Systempruefung eines Kommandos
+	 * System check of a command
 	 *
-	 * @param $sCommand STRING Systemkommando
-	 * @return STRING | TRUE Fehlermeldung oder TRUE fuer Erfolgreiche Pruefung
+	 * @param $sCommand STRING System Command
+	 * @return STRING | TRUE Error message or TRUE for successful examination
 	 */
 	static private function isCommandPresent( $sCommandKey, $sCommandPath ) {
 		global $wgFiCommandPaths;
@@ -41,9 +41,9 @@ class SpecialFileIndexer extends SpecialPage {
 	}
 
 	/**
-	 * Systemvoraussetzungen werden geprueft.
+	 * System requirements are checked.
 	 *
-	 * @return STRING | TRUE Fehlermeldung oder TRUE fuer Erfolgreiche Pruefung
+	 * @return STRING | TRUE Error message or TRUE for successful examination
 	 */
 	static function checkNecessaryCommands() {
 		global $wgFiCheckSystem, $wgFiCommandPaths;
@@ -84,11 +84,11 @@ class SpecialFileIndexer extends SpecialPage {
 	}
 
 	/**
-	 * Prueft, ob der Dateityp der angegebenen Datei vom FileIndexer geprueft wird und liefert
-	 * das die Tatsache zurueck.
+	 * Checks whether the file type of the specified file is checked and returned by the FileIndexer
+	 * that back the fact.
 	 *
 	 * @param $sFilename STRING Dateiname
-	 * @return BOOL Pruefergebnis
+	 * @return BOOL Test result
 	 */
 	public static function checkFileType( $sFilename ) {
 		global $wgFiCommandCalls;
@@ -97,7 +97,7 @@ class SpecialFileIndexer extends SpecialPage {
 	}
 
 	/**
-	 * Ausfuehrung nach Aufruf und nach Formularsubmit. Startet den Indexerstellungsprozess.
+	 * Execution after calling and submitting the form. Starts the index creation process.
 	 */
 	function execute( $par ) {
 		global $wgRequest, $wgOut;
@@ -115,7 +115,7 @@ class SpecialFileIndexer extends SpecialPage {
 	}
 
 	/**
-	 * Fuehrt den Prozess der Indexerstellung durch.
+	 * Performs the index creation process.
 	 */
 	function processIndex() {
 		global $wgRequest, $wgOut, $wgDBtype, $wgDBprefix, $wgFiCreateIndexThisTime, $wgContLang, $wgFiPrefix, $wgFiPostfix;
@@ -127,7 +127,7 @@ class SpecialFileIndexer extends SpecialPage {
 			return;
 		}
 
-		// Feststellen, ob Indexerstellung durchgefuehrt oder Liste nicht indexierter Dateien erzeugt werden soll
+		// Determine whether to create an index or generate a list of unindexed files
 		$bCreateMode = ( $wgRequest->getVal('wpSubmitButton') == wfMessage('fileindexer_sp_label_submit_create'));
 
 		$bSpecialPageNoUpdates = is_null( $wgRequest->getVal('wpNoUpdates'));
@@ -150,8 +150,8 @@ class SpecialFileIndexer extends SpecialPage {
 			$oTitleFile = Title::makeTitleSafe(NS_IMAGE, $sTitleMatch);
 
 			/*
-			 * Title::makeTitleSafe(NS_IMAGE, $sTitleMatch) liefert komischerweise fuer %f und %pdf ein Objekt,
-			 * %df hingegen nicht. Weitere Analysen notwendig
+			 * Title::makeTitleSafe(NS_IMAGE, $sTitleMatch) strangely delivers for %f and %pdf an object,
+			 * %df however not. Further analysis is necessary
 			 */
 			$sTitleAsKey = is_null( $oTitleFile) ? $sTitleMatch : $oTitleFile->getDBKey();
 			if ( $xWildcardSign && strpos( $sTitleMatch, $xWildcardSign) === false || !$xWildcardSign ) {
@@ -179,7 +179,7 @@ class SpecialFileIndexer extends SpecialPage {
 		$aUpdatelyIndexedTitles = array();
 		$aUnsupportedTypeTitles = array();
 
-		// Unbekannte Dateitypen rausfiltern
+		// Filter out unknown file types
 		$aTmp = array();
 		foreach ( array_keys( $aTitles) as $sTitle ) {
 			if ( SpecialFileIndexer::checkFileType( $sTitle) ) {
@@ -198,11 +198,11 @@ class SpecialFileIndexer extends SpecialPage {
 			}
 			$iDestionationArticleId = $aTitleObjects['destination']->getArticleId();
 			if ( $iDestionationArticleId != 0 ) {
-				// Zielartikel existiert
+				// Target article exists
 				$oArticle = Article::newFromId( $iDestionationArticleId);
 				$oArticle->fetchContent();
 
-				// Check, ob Index vorhanden
+				// Check, ob Index available
 				$aFragments = FileIndexer::getIndexFragments( $oArticle->mContent);
 				if ( $aFragments === false ) {
 					$aNewlyIndexedTitles[] = $sTitle;
@@ -211,17 +211,17 @@ class SpecialFileIndexer extends SpecialPage {
 				}
 
 				if ( $bCreateMode && (!$bSpecialPageNoUpdates || $aFragments === false) ) {
-					// Index soll erzeugt/aktualisiert werden
+					// Index should be created / updated
 					$wgFiCreateIndexThisTime = true;
 					$oArticle->doEdit( $oArticle->mContent, wfMessage('fileindexer_sp_index_creation_comment'));
 					$wgFiCreateIndexThisTime = false;
 				}
 			} else {
-				// Zielartikel ist/waere neu
+				// Target article is / would be new
 				$aNewlyIndexedTitles[] = $sTitle;
 
 				if ( $bCreateMode ) {
-					// Index soll erzeugt werden
+					// Index should be generated
 					$oArticle = new Article( $aTitleObjects['destination']);
 					$wgFiCreateIndexThisTime = true;
 					$oArticle->doEdit("", wfMessage('fileindexer_sp_index_creation_comment'));
@@ -277,7 +277,7 @@ class SpecialFileIndexer extends SpecialPage {
 	}
 
 	/**
-	 * Baut das Formular der Spezialseite auf.
+	 * Builds up the form of the special page.
 	 */
 	function showForm() {
 		global $wgOut, $wgUser, $wgRequest, $wgContLang, $wgScriptPath, $wgUseAjax, $wgJsMimeType, $wgFiSpDefaultWildcardSign, $wgFiArticleNamespace, $wgFiSpNamespaceChangeable, $wgFiSpWildcardSignChangeable, $wgFiCommandCalls;
