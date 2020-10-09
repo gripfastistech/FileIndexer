@@ -48,7 +48,7 @@ Install the required dependencies listed at FileIndexer.config.php (lines 59-66)
  - pdftotext: ```sudo apt-get install poppler-utils```
  - iconv: ```sudo apt install libc6```
  - antiword: ```sudo apt install antiword```
- - xls2csv: ```sudo apt install xls2csv```
+ - xls2csv: ```sudo apt-get install catdoc```
  - catppt: ```sudo apt install catdoc```
  - strings: ```apt-get install binutils```
  - unzip: ```apt-get install unzip```
